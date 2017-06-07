@@ -79,7 +79,7 @@ li a:hover:not(.active) {
     background-color: #4CAF50;
 }
 
-.issue{
+.issueCard{
   border: 2px solid grey;
   margin: 10px;
   padding: 20px
@@ -87,6 +87,10 @@ li a:hover:not(.active) {
 
 .issueName{
   color: red
+}
+
+.issue{
+  margin: 35px
 }
 
 .addIssue{
@@ -101,5 +105,9 @@ li a:hover:not(.active) {
   cursor: pointer;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
+}
+
+.state{
+  margin: 20px
 }
 </style>
