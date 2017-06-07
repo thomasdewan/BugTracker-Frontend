@@ -2,15 +2,22 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Resource from 'vue-resource'
 import Issue from '@/components/Issue'
-import Login from '@/auth/Login'
-import Signin from '@/auth/Signin'
+import Login from '@/views/Login'
+import Signin from '@/views/Signin'
 import IssueList from '@/views/IssueList'
+import UserList from '@/views/UserList'
+import Home from '@/views/Home'
 
 Vue.use(Resource)
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path:'/',
+      name:'Home',
+      component: Home
+    },
     {
       path:'/login',
       name:'Login',
@@ -22,7 +29,7 @@ export default new Router({
       component: Signin
     },
     {
-      path:'/',
+      path:'/issueList',
       name:'IssueList',
       component: IssueList
     },
@@ -30,6 +37,11 @@ export default new Router({
       path:'/issue/:id',
       name:'Issue',
       component: Issue
+    },
+    {
+      path:'/userList',
+      name:'UserList',
+      component: UserList
     }
 
   ]

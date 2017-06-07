@@ -21,23 +21,21 @@
 
 <script>
 export default {
-  name: 'issueListe',
+  name: 'issueList',
   data () {
     return {
       issues:[]
     }
   },
-  mounted: function () {
+  created: function () {
           this.$http.get(`http://127.0.0.1:8000/bugTracker/issue/`)
             .then(response => {
               // JSON responses are automatically parsed.
               this.issues=response.data.results
 
-            })
-            .catch(e => {
-              this.errors.push(e)
-              console.info("ERROR MEC")
-            })
+            }, response => {
+                alert("ERROR")
+            });
       }
 }
 </script>

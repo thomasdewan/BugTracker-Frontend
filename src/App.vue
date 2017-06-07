@@ -2,6 +2,14 @@
   <div id="app">
       <div class="container">
           <router-link :to="{name: 'IssueList'}">Home</router-link>
+          <a v-if='username'>
+            <a>{{username}}</a>
+            <a href="" v-on:click.prevent="logout">Logout</a>
+          </a>
+          <a v-else>
+            <router-link :to="{name: 'Login'}">Login</router-link>
+            <router-link :to="{name: 'Signin'}">Signin</router-link>
+          </a>
       </div>
     <img src="./assets/logo.png">
     <router-view></router-view>
@@ -9,8 +17,27 @@
 </template>
 
 <script>
+import bus from './bus'
+
 export default {
-  name: 'app'
+  name: 'app',
+  data () {
+    return {
+      username:localStorage.getItem('username')
+    }
+  },
+  methods: {
+    logout: function(){
+      localStorage.removeItem('username')
+      localStorage.removeItem('token')
+      this.username=null
+    }
+  },
+  created() {
+    bus.$on('authenticated', function(usernameSent){
+      this.username=usernameSent
+    }.bind(this))
+  }
 }
 </script>
 

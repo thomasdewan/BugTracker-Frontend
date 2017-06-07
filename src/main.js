@@ -6,6 +6,20 @@ import router from './router'
 
 Vue.config.productionTip = true
 
+Vue.http.interceptors.push(function(request, next) {
+
+  // modify request
+  console.log("ENVOI")
+
+  // continue to next interceptor
+  next(function(response) {
+
+    // modify response
+    console.log("RECOI")
+
+  });
+});
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
