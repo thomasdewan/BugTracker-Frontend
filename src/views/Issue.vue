@@ -39,7 +39,9 @@
       </div>
     </div>
   </div>
-
+  <div v-if='issue.owner == user'>
+    <button class="delete" v-on:click="deleteIssue">Delete Issue</button>
+  </div>
 
 </div>
 </template>
@@ -57,6 +59,16 @@ export default {
     }
   },
   methods:{
+    deleteIssue : function () {
+      this.$http.delete('http://127.0.0.1:8000/bugTracker/issue/'+this.issue.id, {emulateJSON: true})
+         .then(response => {
+              console.info(response)
+              this.$router.push({name:'IssueList'})
+          }, response => {
+              console.info(response)
+          });
+      console.log("YO")
+    },
     stateChange:function(state){
       console.log(state)
 
