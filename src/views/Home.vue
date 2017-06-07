@@ -1,7 +1,8 @@
 <template>
   <div>
     <h1> HomePage </h1>
-    <p> Log Yourself Or Sign In</p>
+    <p> Welcome To The BugTracker </p>
+    <p> Yay !!</p>
   </div>
 </template>
 

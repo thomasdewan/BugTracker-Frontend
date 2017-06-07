@@ -6,10 +6,6 @@
         <input type="text" placeholder="Username" v-model="username"/>
         <input type="password" placeholder="Password" v-model="password"/>
         <button type="button" v-on:click="loginMethod">Log in</button>
-        <p class="message">
-          Not registered?
-          <router-link :to="{ name: 'Signin'}">Sign In</router-link>
-        </p>
       </form>
   </div>
 </template>
@@ -35,15 +31,13 @@ export default {
 
     this.$http.post('http://127.0.0.1:8000/api-token-auth/', formData, {emulateJSON: true})
        .then(response => {
-            console.log("Token: "+response.body.token)
-
 
             localStorage.setItem('username', this.username)
             localStorage.setItem('token', response.body.token)
 
             bus.$emit('authenticated', this.username)
 
-            this.$router.push({name:'IssueList'})
+            this.$router.push({name:'Home'})
         }, response => {
             alert("Bad Credentials")
         });

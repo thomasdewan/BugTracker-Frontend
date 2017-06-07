@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-      <div class="container">
-          <router-link :to="{name: 'IssueList'}">Home</router-link>
+      <ul>
+          <li><router-link :to="{name: 'Home'}">Home</router-link></li>
           <a v-if='username'>
-            <a>{{username}}</a>
-            <a href="" v-on:click.prevent="logout">Logout</a>
+            <li><router-link :to="{name: 'IssueList'}">Issues</router-link></li>
+            <li><a>{{username}}</a></li>
+            <li><a href="" v-on:click.prevent="logout">Logout</a></li>
           </a>
           <a v-else>
-            <router-link :to="{name: 'Login'}">Login</router-link>
-            <router-link :to="{name: 'Signin'}">Signin</router-link>
+            <li><router-link :to="{name: 'Login'}">Login</router-link></li>
+            <li><router-link :to="{name: 'Signin'}">Signin</router-link></li>
           </a>
-      </div>
-    <img src="./assets/logo.png">
+      </ul>
     <router-view></router-view>
   </div>
 </template>
@@ -31,6 +31,7 @@ export default {
       localStorage.removeItem('username')
       localStorage.removeItem('token')
       this.username=null
+      this.$router.push({name:'Home'})
     }
   },
   created() {
@@ -48,26 +49,57 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 
-html, body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 16px;
-  margin-bottom: 16px;
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
 }
 
 .issue{
   border: 2px solid grey;
-  border-radius: 5px;
   margin: 10px;
   padding: 20px
 }
 
 .issueName{
   color: red
+}
+
+.addIssue{
+  background-color: #FF4000;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
 }
 </style>

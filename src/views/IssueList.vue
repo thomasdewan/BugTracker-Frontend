@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1> Issue List Page </h1>
+    <router-link :to="{name: 'AddIssue'}" class="addIssue">Add Issue</router-link>
       <div class="issue" v-for="issue in issues">
         <div class="issueName">
           {{ issue.name  }}

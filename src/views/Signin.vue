@@ -9,10 +9,6 @@
       E-Mail Address: <input type="text" placeholder="Email address" v-model="email"/><br>
       Password: <input type="password" placeholder="Password" v-model="password"/><br>
       <p><button type="button" v-on:click="signinMethod">Create Account</button></p>
-      <p>
-        Already registered?
-        <router-link :to="{ name: 'Login'}">Log In</router-link>
-      </p>
     </form>
   </div>
 </template>
@@ -50,7 +46,7 @@ export default {
         this.$http.post('http://127.0.0.1:8000/bugTracker/register/', formData, {emulateJSON: true})
            .then(response => {
                 alert("Signin OK !")
-                this.$router.push({name:'IssueList'})
+                this.$router.push({name:'Home'})
             }, response => {
 
               var error=""

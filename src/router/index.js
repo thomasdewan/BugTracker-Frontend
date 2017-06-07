@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Resource from 'vue-resource'
-import Issue from '@/components/Issue'
+import Issue from '@/views/Issue'
 import Login from '@/views/Login'
 import Signin from '@/views/Signin'
 import IssueList from '@/views/IssueList'
 import UserList from '@/views/UserList'
 import Home from '@/views/Home'
+import AddIssue from '@/views/AddIssue'
 
 Vue.use(Resource)
 Vue.use(Router)
@@ -42,6 +43,11 @@ export default new Router({
       path:'/userList',
       name:'UserList',
       component: UserList
+    },
+    {
+      path:'/addIssue',
+      name:'AddIssue',
+      component: AddIssue
     }
 
   ]
