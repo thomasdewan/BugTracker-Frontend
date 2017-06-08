@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1> HomePage </h1>
+    <h1> BugTracker </h1>
     <p> Welcome To The BugTracker </p>
     <p> Yay !!</p>
     <img src="../assets/icon.jpg">
