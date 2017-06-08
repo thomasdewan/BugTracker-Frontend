@@ -32,14 +32,14 @@ export default {
     this.$http.post('http://127.0.0.1:8000/api-token-auth/', formData, {emulateJSON: true})
        .then(response => {
 
-            localStorage.setItem('username', this.username)
-            localStorage.setItem('token', response.body.token)
+            localStorage.setItem('username', this.username);
+            localStorage.setItem('token', response.body.token);
 
-            bus.$emit('authenticated', this.username)
+            bus.$emit('authenticated', this.username);
 
-            this.$router.push({name:'Home'})
+            this.$router.push({name:'Home'});
         }, response => {
-            alert("Bad Credentials")
+            alert("Bad Credentials");
         });
 
     }

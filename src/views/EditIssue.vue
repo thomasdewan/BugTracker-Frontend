@@ -49,7 +49,7 @@ export default {
            .then(response => {
                 this.$router.push({name: 'Issue', params: { idIssue: this.idIssue }});
             }, response => {
-                console.info(response)
+                console.info(response);
             });
 
       } else {

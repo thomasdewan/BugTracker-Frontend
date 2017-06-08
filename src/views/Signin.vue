@@ -45,22 +45,21 @@ export default {
 
         this.$http.post('http://127.0.0.1:8000/bugTracker/register/', formData, {emulateJSON: true})
            .then(response => {
-                alert("Signin OK !")
-                this.$router.push({name:'Home'})
+                this.$router.push({name:'Home'});
             }, response => {
 
               var error=""
               if (response.body.username) {
-                error+="- "+response.body.username+"\n"
+                error+="- "+response.body.username+"\n";
               }
               if (response.body.email) {
-                error+="- "+response.body.email+"\n"
+                error+="- "+response.body.email+"\n";
               }
 
               if (error.length!=0) {
-                alert(error)
+                alert(error);
               } else {
-                console.log(response)
+                console.log(response);
               }
             });
 

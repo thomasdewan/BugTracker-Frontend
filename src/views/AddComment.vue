@@ -22,11 +22,13 @@ export default {
   },
   methods: {
     back: function(){
+      //Go Back to previous page
       this.$router.push({name: 'Issue', params: { idIssue: this.idIssue }});
     },
     addComment:function(){
+      //Check if something was entered
       if (this.comment.length!=0){
-        //OK TO REGISTER
+        //Ok To Register
 
         const formData = {
           issue: this.idIssue,
@@ -35,7 +37,7 @@ export default {
 
         this.$http.post('http://127.0.0.1:8000/bugTracker/comment/', formData, {emulateJSON: true})
            .then(response => {
-                console.info(response)
+                // If OK => redirect to issue page
                 this.$router.push({ name: 'Issue', params: { 'idIssue': this.idIssue }});
             }, response => {
                 console.info(response)
@@ -47,7 +49,7 @@ export default {
     }
   },
   created: function () {
-    this.idIssue=this.$route.params.idIssue
+    this.idIssue=this.$route.params.idIssue;
   }
 }
 </script>

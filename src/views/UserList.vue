@@ -20,10 +20,10 @@ export default {
           this.$http.get(`http://127.0.0.1:8000/bugTracker/user/`)
             .then(response => {
               // JSON responses are automatically parsed.
-              this.users=response.data.results
+              this.users=response.data.results;
 
             }, response => {
-                alert("ERROR")
+              console.log(response);
             });
       }
 }

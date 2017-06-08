@@ -21,6 +21,7 @@ export default {
   },
   methods: {
     createIssue: function () {
+      //Check for Fields
       if (this.issue.length!=0 &&
           this.description.length!=0){
         //OK TO REGISTER
@@ -33,10 +34,9 @@ export default {
 
         this.$http.post('http://127.0.0.1:8000/bugTracker/issue/', formData, {emulateJSON: true})
            .then(response => {
-                console.info(response)
-                this.$router.push({name:'IssueList'})
+                this.$router.push({name:'IssueList'});
             }, response => {
-                console.info(response)
+                console.info(response);
             });
 
       } else {

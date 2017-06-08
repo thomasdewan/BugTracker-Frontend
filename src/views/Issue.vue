@@ -82,15 +82,12 @@ export default {
     deleteIssue : function () {
       this.$http.delete('http://127.0.0.1:8000/bugTracker/issue/'+this.issue.id, {emulateJSON: true})
          .then(response => {
-              console.info(response)
-              this.$router.push({name:'IssueList'})
+              this.$router.push({name:'IssueList'});
           }, response => {
-              console.info(response)
+              console.info(response);
           });
-      console.log("YO")
     },
     stateChange:function(state){
-      console.log(state)
 
       const formData = {
         state:state
@@ -98,10 +95,9 @@ export default {
 
       this.$http.patch('http://127.0.0.1:8000/bugTracker/issue/'+this.issue.id, formData, {emulateJSON: true})
          .then(response => {
-              console.info(response)
-              this.issue.state = state
+              this.issue.state = state;
           }, response => {
-              console.info(response)
+              console.info(response);
           });
 
     },
@@ -110,23 +106,20 @@ export default {
       this.$http.get(`http://127.0.0.1:8000/bugTracker/issue/`+this.$route.params.idIssue)
         .then(response => {
           // JSON responses are automatically parsed.
-          this.issue=response.data
+          this.issue=response.data;
         })
         .catch(e => {
-          this.errors.push(e)
-          console.info("ERROR MEC")
+          this.errors.push(e);
         })
       this.$http.get(`http://127.0.0.1:8000/bugTracker/commentForIssue/`+this.$route.params.idIssue)
         .then(response => {
-        // JSON responses are automatically parsed.
         if (response.data.length!=0) {
-          this.isCommentsEmpty=false
+          this.isCommentsEmpty=false;
         }
-        this.comments=response.data
+        this.comments=response.data;
         })
         .catch(e => {
-          this.errors.push(e)
-          console.info("ERROR MEC")
+          this.errors.push(e);
         })
       }
 }
