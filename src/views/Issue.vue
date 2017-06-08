@@ -8,7 +8,7 @@
       <b>{{ issue.name }}</b> <br>
       <b>By:</b> {{ issue.owner }} <br>
       {{ issue.description }} <br>
-      <b>Creation Date:</b> {{ issue.creationDate }} <br>
+      <b>Creation Date:</b> {{issueDate}} at {{issueTime}}<br>
       <div class="editButtonSection" v-if='issue.owner == user'>
         <button class="customButton" id="edit" v-on:click="editIssue">Edit Issue</button>
       </div>
@@ -59,6 +59,8 @@ export default {
       test:"TRUC",
       issue:{},
       comments:{},
+      issueDate:'',
+      issueTime:'',
       isCommentsEmpty:true,
       states:["Open","Closed","Archived"],
       user: localStorage.getItem('username')
@@ -102,6 +104,8 @@ export default {
         .then(response => {
           // JSON responses are automatically parsed.
           this.issue=response.data;
+          this.issueDate = response.data.creationDate.substring(0,10);
+          this.issueTime = response.data.creationDate.substring(11,19);
         })
         .catch(e => {
           this.errors.push(e);
@@ -109,6 +113,7 @@ export default {
       this.$http.get(`http://127.0.0.1:8000/bugTracker/commentForIssue/`+this.$route.params.idIssue)
         .then(response => {
         if (response.data.length!=0) {
+          //Check if there are comments for the view
           this.isCommentsEmpty=false;
         }
         this.comments=response.data;

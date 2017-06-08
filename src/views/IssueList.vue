@@ -4,9 +4,8 @@
     <router-link :to="{name: 'AddIssue'}" class="addIssue">Add Issue</router-link>
       <div class="issueCard" v-for="issue in issues">
         <b>{{ issue.name  }}</b> <br>
-        By: {{ issue.owner }} <br>
+        <b>By:</b> {{ issue.owner }} <br>
         {{ issue.description }} <br>
-        Creation Date: {{ issue.creationDate.substring(0, 10) }} <br>
         <router-link :to="{ name: 'Issue', params: { 'idIssue': issue.id }}">Show More</router-link>
       </div>
   </div>
@@ -17,14 +16,14 @@ export default {
   name: 'issueList',
   data () {
     return {
-      issues:[]
+      issues:[],
     }
   },
   created: function () {
           this.$http.get(`http://127.0.0.1:8000/bugTracker/issue/`)
             .then(response => {
               // JSON responses are automatically parsed.
-              this.issues=response.body;
+              this.issues = response.body;
 
             }, response => {
                 console.log(response);
