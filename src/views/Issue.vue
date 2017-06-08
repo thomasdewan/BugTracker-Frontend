@@ -106,10 +106,9 @@ export default {
           this.issue=response.data;
           this.issueDate = response.data.creationDate.substring(0,10);
           this.issueTime = response.data.creationDate.substring(11,19);
-        })
-        .catch(e => {
-          this.errors.push(e);
-        })
+        }, response => {
+            console.info(response);
+        });
       this.$http.get(`http://127.0.0.1:8000/bugTracker/commentForIssue/`+this.$route.params.idIssue)
         .then(response => {
         if (response.data.length!=0) {
@@ -117,10 +116,9 @@ export default {
           this.isCommentsEmpty=false;
         }
         this.comments=response.data;
-        })
-        .catch(e => {
-          this.errors.push(e);
-        })
+        }, response => {
+            console.info(response);
+        });
       }
 }
 </script>
