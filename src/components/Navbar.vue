@@ -34,6 +34,11 @@ export default {
     bus.$on('authenticated', function(usernameSent){
       this.username=usernameSent;
     }.bind(this))
+    bus.$on('deauthenticated', function(){
+      this.username='';
+      localStorage.removeItem('username');
+      localStorage.removeItem('token');
+    }.bind(this))
   }
 }
 </script>
