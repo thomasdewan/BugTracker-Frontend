@@ -15,7 +15,7 @@
         <div class="issueCreationDate">
           Creation Date: {{ issue.creationDate }}
         </div>
-        <router-link :to="{ name: 'Issue', params: { 'id': issue.id }}">Show More</router-link>
+        <router-link :to="{ name: 'Issue', params: { 'idIssue': issue.id }}">Show More</router-link>
       </div>
   </div>
 </template>
@@ -32,7 +32,7 @@ export default {
           this.$http.get(`http://127.0.0.1:8000/bugTracker/issue/`)
             .then(response => {
               // JSON responses are automatically parsed.
-              this.issues=response.data.results
+              this.issues=response.body
 
             }, response => {
                 alert("ERROR")

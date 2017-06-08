@@ -1,46 +1,52 @@
 <template>
 <div>
   <div class="issue">
-    <h2>Informations</h2>
-    <div class="issueName">
-      {{ issue.name  }}
-    </div>
-    <div class="issueOwner">
-      By: {{ issue.owner }}
-    </div>
-    <div class="issueDescription">
-      {{ issue.description }}
-    </div>
-    <div class="issueCreationDate">
-      Creation Date: {{ issue.creationDate }}
-    </div>
+    <h2>
+      Informations
+      <button class="customButton" id="backButton" v-on:click="back">Back</button>
+    </h2>
+      <b>Issue:</b> {{ issue.name }} <br>
+
+      <b>By:</b> {{ issue.owner }} <br>
+
+      {{ issue.description }} <br>
+
+      <b>Creation Date:</b> {{ issue.creationDate }} <br>
   </div>
-  <div class="Comments">
+  <div class="comments">
     <h2>Comments</h2>
     <div v-if='!isCommentsEmpty'>
       <div class="issueComment" v-for="comment in comments">
-        {{comment.comment}} by {{comment.owner}}
+        <a class="ownerComment">{{comment.owner}}</a> wrote: <br>
+        {{comment.comment}}<br>
+        <a class="dateComment">on {{comment.creationDate}}</a>
       </div>
     </div>
     <div v-else>
       No Comments
     </div>
+    <div class="commentButtonSection">
+      <button class="customButton" id="comment" v-on:click="addComment">Add Comment</button>
+    </div>
   </div>
   <div class="state">
     <h2>State</h2>
-    Current State: {{this.states[(issue.state)-1]}}<br>
+    Current State: {{this.states[(issue.state)-1]}}<br><br>
     <div v-if='issue.owner == user'>
       <div v-if='issue.state==2'>
-        <button type="stateOpen" v-on:click="stateChange(1)">Open</button>
+        <button class="customButton" type="stateOpen" v-on:click="stateChange(1)">Open</button>
       </div>
       <div v-if='issue.state==1'>
-        <button type="stateClose" v-on:click="stateChange(2)">Close</button>
-        <button type="stateArchived" v-on:click="stateChange(3)">Archive</button>
+        <button class="customButton" type="stateClose" v-on:click="stateChange(2)">Close</button>
+        <button class="customButton" type="stateArchived" v-on:click="stateChange(3)">Archive</button>
       </div>
     </div>
+    <div v-else>
+      <a>You are not allowed to change the state of the issue</a>
+    </div>
   </div>
-  <div v-if='issue.owner == user'>
-    <button class="delete" v-on:click="deleteIssue">Delete Issue</button>
+  <div class="deleteButtonSection" v-if='issue.owner == user'>
+    <button class="customButton" id="delete" v-on:click="deleteIssue">Delete Issue</button>
   </div>
 
 </div>
@@ -59,6 +65,12 @@ export default {
     }
   },
   methods:{
+    back : function functionName() {
+      this.$router.push({name: 'IssueList'});
+    },
+    addComment : function(){
+      this.$router.push({name: 'AddComment', params: { idIssue: this.issue.id }});
+    },
     deleteIssue : function () {
       this.$http.delete('http://127.0.0.1:8000/bugTracker/issue/'+this.issue.id, {emulateJSON: true})
          .then(response => {
@@ -88,7 +100,7 @@ export default {
     },
   },
   created: function () {
-      this.$http.get(`http://127.0.0.1:8000/bugTracker/issue/`+this.$route.params.id)
+      this.$http.get(`http://127.0.0.1:8000/bugTracker/issue/`+this.$route.params.idIssue)
         .then(response => {
           // JSON responses are automatically parsed.
           this.issue=response.data
@@ -97,7 +109,7 @@ export default {
           this.errors.push(e)
           console.info("ERROR MEC")
         })
-      this.$http.get(`http://127.0.0.1:8000/bugTracker/commentForIssue/`+this.$route.params.id)
+      this.$http.get(`http://127.0.0.1:8000/bugTracker/commentForIssue/`+this.$route.params.idIssue)
         .then(response => {
         // JSON responses are automatically parsed.
         if (response.data.length!=0) {
@@ -113,5 +125,66 @@ export default {
 }
 </script>
 <style>
+
+.issueName{
+  color: red
+}
+
+.issue{
+  margin: 35px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+  padding-bottom: 30px;
+}
+
+.comments{
+  margin: 35px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+  padding-bottom: 40px;
+}
+
+.issueComment{
+  margin-left:15px;
+  margin-bottom: 15px;
+}
+
+.ownerComment{
+  color: #0174DF
+}
+.dateComment{
+  font-size: 75%
+}
+
+.state{
+  margin: 35px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+  padding-bottom: 30px;
+}
+
+.deleteButtonSection{
+  margin-right: 35px;
+  margin-bottom: 20px;
+  float: right;
+}
+
+.commentButtonSection{
+  float: right;
+  width: 100px;
+}
+
+#delete{
+  background-color: #FE2E2E;
+}
+
+#comment{
+background-color: #2E9AFE;
+}
+
+#backButton{
+  float: right;
+  width: 50px;
+}
 
 </style>

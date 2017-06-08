@@ -75,27 +75,14 @@ li a:hover:not(.active) {
     background-color: #111;
 }
 
-.active {
-    background-color: #4CAF50;
-}
-
 .issueCard{
   border: 2px solid grey;
   margin: 10px;
   padding: 20px
 }
 
-.issueName{
-  color: red
-}
-
-.issue{
-  margin: 35px
-}
-
 .addIssue{
-  background-color: #FF4000;
-  border: none;
+  background-color: #FE2E2E;
   color: white;
   padding: 10px 20px;
   text-align: center;
@@ -103,11 +90,27 @@ li a:hover:not(.active) {
   display: inline-block;
   font-size: 16px;
   cursor: pointer;
-  -webkit-transition-duration: 0.4s; /* Safari */
+  -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
 }
 
-.state{
-  margin: 20px
+.addIssue:hover{
+  background-color: #FE642E;
+}
+
+.customButton{
+    cursor:pointer;
+    opacity: 1;
+    font-family: 'Avenir';
+    background-color: white;
+    border-radius: 5px;
+    color: black;
+    border: 2px solid #333;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+}
+
+.customButton:hover{
+  opacity: 0.7;
 }
 </style>
