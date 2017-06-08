@@ -9,6 +9,7 @@ import UserList from '@/views/UserList'
 import Home from '@/views/Home'
 import AddIssue from '@/views/AddIssue'
 import AddComment from '@/views/AddComment'
+import EditIssue from '@/views/EditIssue'
 
 Vue.use(Resource)
 Vue.use(Router)
@@ -54,6 +55,11 @@ export default new Router({
       path:'/addComment/:idIssue',
       name:'AddComment',
       component: AddComment
+    },
+    {
+      path:'/editIssue/:idIssue',
+      name:'EditIssue',
+      component: EditIssue
     }
 
   ]

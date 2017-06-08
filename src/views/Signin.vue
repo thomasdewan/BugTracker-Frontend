@@ -2,7 +2,7 @@
   <div>
     <h1> Signin Page </h1>
     <br>
-    <form class="register-form">
+    <form class="registerForm">
       Username: <input type="text" placeholder="Username" v-model="username"/><br>
       First Name: <input type="text" placeholder="First Name" v-model="first_name"/><br>
       Last Name: <input type="text" placeholder="Last Name" v-model="last_name"/> <br>

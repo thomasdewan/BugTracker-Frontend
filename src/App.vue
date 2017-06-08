@@ -75,29 +75,6 @@ li a:hover:not(.active) {
     background-color: #111;
 }
 
-.issueCard{
-  border: 2px solid grey;
-  margin: 10px;
-  padding: 20px
-}
-
-.addIssue{
-  background-color: #FE2E2E;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-  -webkit-transition-duration: 0.4s;
-  transition-duration: 0.4s;
-}
-
-.addIssue:hover{
-  background-color: #FE642E;
-}
-
 .customButton{
     cursor:pointer;
     opacity: 1;

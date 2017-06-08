@@ -3,18 +3,10 @@
     <h1> Issue List Page </h1>
     <router-link :to="{name: 'AddIssue'}" class="addIssue">Add Issue</router-link>
       <div class="issueCard" v-for="issue in issues">
-        <div class="issueName">
-          {{ issue.name  }}
-        </div>
-        <div class="issueOwner">
-          By: {{ issue.owner }}
-        </div>
-        <div class="issueDescription">
-          {{ issue.description }}
-        </div>
-        <div class="issueCreationDate">
-          Creation Date: {{ issue.creationDate }}
-        </div>
+        <b>{{ issue.name  }}</b> <br>
+        By: {{ issue.owner }} <br>
+        {{ issue.description }} <br>
+        Creation Date: {{ issue.creationDate.substring(0, 10) }} <br>
         <router-link :to="{ name: 'Issue', params: { 'idIssue': issue.id }}">Show More</router-link>
       </div>
   </div>
@@ -42,5 +34,28 @@ export default {
 </script>
 
 <style>
+.issueCard{
+  text-align: left;
+  border: 2px solid grey;
+  margin: 10px;
+  padding: 10px;
+  width: 300px;
+}
 
+.addIssue{
+  background-color: #FE2E2E;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.addIssue:hover{
+  background-color: #FE642E;
+}
 </style>

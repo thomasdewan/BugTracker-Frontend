@@ -5,13 +5,18 @@
       Informations
       <button class="customButton" id="backButton" v-on:click="back">Back</button>
     </h2>
-      <b>Issue:</b> {{ issue.name }} <br>
+      <b>{{ issue.name }}</b> <br>
 
       <b>By:</b> {{ issue.owner }} <br>
 
       {{ issue.description }} <br>
 
       <b>Creation Date:</b> {{ issue.creationDate }} <br>
+
+      <div class="editButtonSection" v-if='issue.owner == user'>
+        <button class="customButton" id="edit" v-on:click="editIssue">Edit Issue</button>
+      </div>
+
   </div>
   <div class="comments">
     <h2>Comments</h2>
@@ -65,7 +70,10 @@ export default {
     }
   },
   methods:{
-    back : function functionName() {
+    editIssue: function(){
+      this.$router.push({name: 'EditIssue', params: { idIssue: this.issue.id }});
+    },
+    back : function () {
       this.$router.push({name: 'IssueList'});
     },
     addComment : function(){
@@ -92,7 +100,6 @@ export default {
          .then(response => {
               console.info(response)
               this.issue.state = state
-              //this.$router.push({name:'IssueList'})
           }, response => {
               console.info(response)
           });
@@ -135,6 +142,11 @@ export default {
   text-align: left;
   border-bottom: 1px solid #333;
   padding-bottom: 30px;
+}
+
+.editButtonSection{
+  float: right;
+  width: 70px;
 }
 
 .comments{
@@ -184,7 +196,10 @@ background-color: #2E9AFE;
 
 #backButton{
   float: right;
-  width: 50px;
+  width: 70px;
+}
+
+#edit{
 }
 
 </style>

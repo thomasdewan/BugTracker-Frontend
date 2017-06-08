@@ -1,6 +1,9 @@
 <template>
   <div>
-    <h1>Add Comment Page</h1>
+    <h1>
+      Add Comment Page
+      <button class="customButton" id="backButton" v-on:click="back">Back</button>
+    </h1>
     <form class="addComment">
       Comment: <br> <textarea name="Text1" cols="40" rows="5" v-model="comment"></textarea><br>
       <p><button type="button" class="customButton" v-on:click="addComment">Add Comment</button></p>
@@ -18,6 +21,9 @@ export default {
     }
   },
   methods: {
+    back: function(){
+      this.$router.push({name: 'Issue', params: { idIssue: this.idIssue }});
+    },
     addComment:function(){
       if (this.comment.length!=0){
         //OK TO REGISTER
