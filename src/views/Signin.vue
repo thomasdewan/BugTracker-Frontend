@@ -2,14 +2,29 @@
   <div>
     <h1> Signin Page </h1>
     <br>
-    <form class="registerForm">
-      Username: <input type="text" placeholder="Username" v-model="username"/><br>
-      First Name: <input type="text" placeholder="First Name" v-model="first_name"/><br>
-      Last Name: <input type="text" placeholder="Last Name" v-model="last_name"/> <br>
-      E-Mail Address: <input type="text" placeholder="Email address" v-model="email"/><br>
-      Password: <input type="password" placeholder="Password" v-model="password"/><br>
+      <table>
+        <tr>
+          <td>Username: </td>
+          <td><input type="text" placeholder="Username" v-model="username"/></td>
+        </tr>
+        <tr>
+          <td>First Name: </td>
+          <td><input type="text" placeholder="First Name" v-model="first_name"/></td>
+        </tr>
+        <tr>
+          <td>Last Name: </td>
+          <td><input type="text" placeholder="Last Name" v-model="last_name"/></td>
+        </tr>
+        <tr>
+          <td>E-Mail Address: </td>
+          <td><input type="text" placeholder="Email address" v-model="email"/></td>
+        </tr>
+        <tr>
+          <td>Password: </td>
+          <td><input type="password" placeholder="Password" v-model="password"/></td>
+        </tr>
+      </table>
       <p><button type="button" v-on:click="signinMethod">Create Account</button></p>
-    </form>
   </div>
 </template>
 
@@ -74,5 +89,13 @@ export default {
 </script>
 
 <style>
+
+table{
+  margin: 0 auto;
+}
+
+td {
+    text-align: left;
+}
 
 </style>

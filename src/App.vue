@@ -83,6 +83,7 @@ li a:hover:not(.active) {
     cursor:pointer;
     opacity: 1;
     font-family: 'Avenir';
+    font-size: 12px;
     background-color: white;
     border-radius: 5px;
     color: black;

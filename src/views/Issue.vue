@@ -6,17 +6,12 @@
       <button class="customButton" id="backButton" v-on:click="back">Back</button>
     </h2>
       <b>{{ issue.name }}</b> <br>
-
       <b>By:</b> {{ issue.owner }} <br>
-
       {{ issue.description }} <br>
-
       <b>Creation Date:</b> {{ issue.creationDate }} <br>
-
       <div class="editButtonSection" v-if='issue.owner == user'>
         <button class="customButton" id="edit" v-on:click="editIssue">Edit Issue</button>
       </div>
-
   </div>
   <div class="comments">
     <h2>Comments</h2>
@@ -134,7 +129,7 @@ export default {
   margin: 35px;
   text-align: left;
   border-bottom: 1px solid #333;
-  padding-bottom: 30px;
+  padding-bottom: 40px;
 }
 
 .editButtonSection{
@@ -161,6 +156,12 @@ export default {
   font-size: 75%
 }
 
+.commentButtonSection{
+  float: right;
+  width: 100px;
+}
+
+
 .state{
   margin: 35px;
   text-align: left;
@@ -172,11 +173,6 @@ export default {
   margin-right: 35px;
   margin-bottom: 20px;
   float: right;
-}
-
-.commentButtonSection{
-  float: right;
-  width: 100px;
 }
 
 #delete{
