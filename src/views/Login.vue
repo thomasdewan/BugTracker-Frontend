@@ -2,10 +2,12 @@
   <div>
     <h1> Login Page </h1>
     <br>
-      <form class="login-form">
-        <input type="text" placeholder="Username" v-model="username"/>
-        <input type="password" placeholder="Password" v-model="password"/>
-        <button type="button" v-on:click="loginMethod">Log in</button>
+      <form class="loginForm">
+        <a>Username</a> <br>
+        <input type="text" placeholder="Username" v-model="username"/> <br>
+        <a>Password</a> <br>
+        <input type="password" placeholder="Password" v-model="password" v-on:keyup.enter="loginMethod"/> <br>
+        <button type="button" class="submitButton" v-on:click="loginMethod">Log in</button>
       </form>
   </div>
 </template>
@@ -48,5 +50,13 @@ export default {
 </script>
 
 <style>
+
+.loginForm{
+
+}
+
+.submitButton{
+  margin-top: 15px;
+}
 
 </style>
