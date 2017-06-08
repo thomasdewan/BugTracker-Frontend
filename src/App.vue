@@ -4,7 +4,7 @@
           <li><router-link :to="{name: 'Home'}">Home</router-link></li>
           <a v-if='username'>
             <li><router-link :to="{name: 'IssueList'}">Issues</router-link></li>
-            <li><a>{{username}}</a></li>
+            <li><a id="usernameMenu">{{username}}</a></li>
             <li><a href="" v-on:click.prevent="logout">Logout</a></li>
           </a>
           <a v-else>
@@ -75,6 +75,10 @@ li a:hover:not(.active) {
     background-color: #111;
 }
 
+#usernameMenu:hover:not(.active){
+  background-color: #333;
+}
+
 .customButton{
     cursor:pointer;
     opacity: 1;
@@ -83,8 +87,8 @@ li a:hover:not(.active) {
     border-radius: 5px;
     color: black;
     border: 2px solid #333;
-    -webkit-transition-duration: 0.2s;
-    transition-duration: 0.2s;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
 }
 
 .customButton:hover{
