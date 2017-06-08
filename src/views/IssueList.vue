@@ -36,7 +36,7 @@ export default {
 .issueCard{
   text-align: left;
   border: 2px solid grey;
-  margin: 10px;
+  margin: 0 auto;
   padding: 10px;
   width: 300px;
   margin-top: 20px;
