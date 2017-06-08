@@ -12,7 +12,6 @@ Vue.http.interceptors.push(function(request, next) {
     var tokenString = 'Token '+localStorage.getItem('token')
     request.headers.set('Authorization', tokenString)
   }
-  // continue to next interceptor
   next(function(response) {
     // modify response
   });

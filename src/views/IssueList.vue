@@ -22,9 +22,7 @@ export default {
   created: function () {
           this.$http.get(`http://127.0.0.1:8000/bugTracker/issue/`)
             .then(response => {
-              // JSON responses are automatically parsed.
               this.issues = response.body;
-
             }, response => {
                 console.log(response);
             });

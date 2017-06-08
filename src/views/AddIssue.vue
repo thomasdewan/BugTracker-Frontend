@@ -2,11 +2,17 @@
   <div>
     <h1> Add Issue Page </h1>
     <br>
-    <form class="register-form">
-      Issue: <input type="text" placeholder="Issue" v-model="issue"/><br>
-      Description: <input type="text" placeholder="Description" v-model="description"/><br>
-      <p><button type="button" v-on:click="createIssue">Create Issue</button></p>
-    </form>
+    <table>
+      <tr>
+        <td>Issue: </td>
+        <td><input type="text" placeholder="Issue" v-model="issue"/></td>
+      </tr>
+      <tr>
+        <td>Description: </td>
+        <td><input type="text" placeholder="Description" v-model="description"/></td>
+      </tr>
+    </table>
+    <p><button type="button" v-on:click="createIssue">Create Issue</button></p>
   </div>
 </template>
 
@@ -48,5 +54,11 @@ export default {
 </script>
 
 <style>
+table{
+  margin: 0 auto;
+}
 
+td {
+    text-align: left;
+}
 </style>
