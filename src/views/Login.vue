@@ -36,10 +36,14 @@ export default {
             localStorage.setItem('token', response.body.token);
 
             this.$store.commit('authenticate', this.username);
-            
+
             this.$router.push({name:'Home'});
         }, response => {
-            alert("Bad Credentials");
+            if (response.body=="") {
+              alert("Cannot Connect to DB")
+            }else{
+              alert("Bad Credentials");
+            }
         });
 
     }
