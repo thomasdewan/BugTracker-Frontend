@@ -1,6 +1,6 @@
 <template>
   <ul>
-      <li><a id="usernameMenu">{{title}}</a></li>
+      <li><b><a id="usernameMenu">{{title}}</a></b></li>
       <li><router-link :to="{name: 'Home'}">Home</router-link></li>
       <a v-if='username'>
         <li><router-link :to="{name: 'IssueList'}">Issues</router-link></li>
@@ -15,32 +15,19 @@
 </template>
 
 <script>
-import bus from '../bus'
 export default {
   name:'NavBar',
-  data(){
-    return{
-      username:localStorage.getItem('username'),
-    }
-  },
   methods:{
     logout: function(){
       localStorage.removeItem('username');
       localStorage.removeItem('token');
-      this.username='';
+      this.$store.commit('deauthenticate');
       this.$router.push({name:'Home'});
     }
   },
   props: ['title'],
-  created() {
-    bus.$on('authenticated', function(usernameSent){
-      this.username=usernameSent;
-    }.bind(this))
-    bus.$on('deauthenticated', function(){
-      this.username='';
-      localStorage.removeItem('username');
-      localStorage.removeItem('token');
-    }.bind(this))
+  computed:{
+    username() { return this.$store.state.username },
   }
 }
 </script>

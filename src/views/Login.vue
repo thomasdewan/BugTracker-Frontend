@@ -13,8 +13,6 @@
 </template>
 
 <script>
-import bus from '../bus'
-
 export default {
   name: 'login',
   data () {
@@ -37,8 +35,8 @@ export default {
             localStorage.setItem('username', this.username);
             localStorage.setItem('token', response.body.token);
 
-            bus.$emit('authenticated', this.username);
-
+            this.$store.commit('authenticate', this.username);
+            
             this.$router.push({name:'Home'});
         }, response => {
             alert("Bad Credentials");
