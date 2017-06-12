@@ -1,6 +1,6 @@
 <template>
   <ul>
-      <li><b><a id="usernameMenu">{{title}}</a></b></li>
+      <li><a id="titleMenu">{{title}}</a></li>
       <li><router-link :to="{name: 'Home'}">Home</router-link></li>
       <a v-if='username'>
         <li><router-link :to="{name: 'IssueList'}">Issues</router-link></li>
@@ -60,4 +60,13 @@ li a:hover:not(.active) {
 #usernameMenu:hover:not(.active){
   background-color: #333;
 }
+
+#titleMenu{
+  font-weight: bold;
+}
+
+#titleMenu:hover:not(.active){
+  background-color: #333;
+}
+
 </style>
