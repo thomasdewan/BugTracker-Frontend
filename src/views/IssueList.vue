@@ -2,12 +2,7 @@
   <div>
     <h1> Issue List Page </h1>
     <router-link :to="{name: 'AddIssue'}" class="addIssue">Add Issue</router-link>
-      <div class="issueCard" v-for="issue in issues">
-        <b>{{ issue.name  }}</b> <br>
-        <b>By:</b> {{ issue.owner }} <br>
-        {{ issue.description }} <br>
-        <router-link :to="{ name: 'Issue', params: { 'idIssue': issue.id }}">Show More</router-link>
-      </div>
+    <issueCard v-for="issue in issues" v-bind:issue="issue" v-bind:key="issue.id"> </issueCard>
   </div>
 </template>
 
@@ -31,15 +26,6 @@ export default {
 </script>
 
 <style>
-.issueCard{
-  text-align: left;
-  border: 2px solid grey;
-  margin: 0 auto;
-  padding: 10px;
-  width: 300px;
-  margin-top: 20px;
-}
-
 .addIssue{
   background-color: #FE2E2E;
   color: white;

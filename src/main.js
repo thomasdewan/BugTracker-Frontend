@@ -28,6 +28,7 @@ Vue.http.interceptors.push(function(request, next) {
 });
 
 Vue.component('navbar', require('./components/Navbar.vue'));
+Vue.component('issueCard', require('./components/IssueCard.vue'))
 
 new Vue({
   el: '#app',

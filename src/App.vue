@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <navbar></navbar>
+    <navbar v-bind:title="title"></navbar>
     <router-view></router-view>
   </div>
 </template>
@@ -8,6 +8,11 @@
 <script>
 export default {
   name: 'app',
+  data(){
+    return{
+      title:"BugTracker"
+    }
+  }
 }
 </script>
 

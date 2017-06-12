@@ -1,5 +1,6 @@
 <template>
   <ul>
+      <li><a id="usernameMenu">{{title}}</a></li>
       <li><router-link :to="{name: 'Home'}">Home</router-link></li>
       <a v-if='username'>
         <li><router-link :to="{name: 'IssueList'}">Issues</router-link></li>
@@ -30,6 +31,7 @@ export default {
       this.$router.push({name:'Home'});
     }
   },
+  props: ['title'],
   created() {
     bus.$on('authenticated', function(usernameSent){
       this.username=usernameSent;
