@@ -9,7 +9,7 @@
       </a>
       <a v-else>
         <li><router-link :to="{name: 'Login'}">Login</router-link></li>
-        <li><router-link :to="{name: 'Signin'}">Signin</router-link></li>
+        <li><router-link :to="{name: 'Signup'}">Signup</router-link></li>
       </a>
   </ul>
 </template>

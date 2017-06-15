@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1> Signin Page </h1>
+    <h1> Signup Page </h1>
     <br>
       <table>
         <tr>
@@ -24,13 +24,13 @@
           <td><input type="password" placeholder="Password" v-model="password"/></td>
         </tr>
       </table>
-      <p><button type="button" v-on:click="signinMethod">Create Account</button></p>
+      <p><button type="button" v-on:click="signupMethod">Create Account</button></p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'signin',
+  name: 'signup',
   data () {
     return {
       username:'',
@@ -41,7 +41,7 @@ export default {
     }
   },
   methods: {
-    signinMethod: function (event) {
+    signupMethod: function (event) {
 
       if (this.username.length!=0 &&
           this.first_name.length!=0 &&

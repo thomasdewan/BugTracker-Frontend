@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Resource from 'vue-resource'
 import Issue from '@/views/Issue'
 import Login from '@/views/Login'
-import Signin from '@/views/Signin'
+import Signup from '@/views/Signup'
 import IssueList from '@/views/IssueList'
 import UserList from '@/views/UserList'
 import Home from '@/views/Home'
@@ -27,9 +27,9 @@ export default new Router({
       component: Login
     },
     {
-      path:'/signin',
-      name:'Signin',
-      component: Signin
+      path:'/signup',
+      name:'Signup',
+      component: Signup
     },
     {
       path:'/issueList',
